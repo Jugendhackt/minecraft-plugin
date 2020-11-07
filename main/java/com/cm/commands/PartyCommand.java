@@ -25,7 +25,7 @@ public class PartyCommand implements CommandExecutor {
                 } else {
                     player.sendMessage(ChatColor.RED + "Only owners can invite players");
                 }
-
+//tbvidäa
             } else if (args[0].equalsIgnoreCase("kick")) {
                 if (Main.owner.equalsIgnoreCase(player.getName())) {
                     if (Main.members.contains(args[1])) {

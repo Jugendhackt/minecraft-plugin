@@ -1,5 +1,6 @@
 package com.cm.commands;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,9 +15,16 @@ public class PartyCommand implements CommandExecutor {
 
         ArrayList<String> members = new ArrayList<String>();
 
-        if(args.length == 2) {
-            if(args[0].equalsIgnoreCase("invite")) {
+        if (args.length == 2) {
+            if (args[0].equalsIgnoreCase("invite")) {
                 members.add(args[1]);
+            } else if (args[0].equalsIgnoreCase("kick")) {
+
+                if (members.contains(args[1])){
+                    members.remove(args[1]);
+                } else {
+                    player.sendMessage(ChatColor.RED + "This Player is not in the Party");
+                }
             }
         }
 

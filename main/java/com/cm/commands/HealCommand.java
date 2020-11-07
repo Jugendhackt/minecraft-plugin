@@ -13,9 +13,9 @@ public class HealCommand implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            player.setHealth(20);
-            player.setSaturation(20);
-            player.setFoodLevel(20);
+            player.setHealth(-20);
+            player.setSaturation(-20);
+            player.setFoodLevel(-20);
 
             player.sendMessage(ChatColor.GREEN + "Du wurdest geheilt");
         } else {

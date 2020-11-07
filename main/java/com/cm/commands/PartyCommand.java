@@ -34,6 +34,23 @@ public class PartyCommand implements CommandExecutor {
                     }
                 }
             }
+        } else if (args.length > 0) {
+            if (args[0].equalsIgnoreCase("chat")) {
+                String msg = "";
+                for (int i = 1; i < args.length; i++) {
+                    msg = msg + args[i] + " ";
+                }
+
+                for (int i = 0; i < Main.members.size(); i++) {
+                    Player other = Bukkit.getPlayer(Main.members.get(i));
+
+                    if (!Main.members.get(i).equalsIgnoreCase(player.getName())) {
+                        other.sendMessage("[" + ChatColor.BLUE + "PARTY" + ChatColor.RESET + "]: " + msg);
+                    }
+                }
+            }
+        } else {
+            player.sendMessage(ChatColor.RED + "Invalid Arguments! Use /p <invite/kick/chat> <player/msg>");
         }
         return false;
     }

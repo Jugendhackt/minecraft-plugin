@@ -5,5 +5,5 @@ api-version: 1.16
 authors: [c_64]
 
 commands:
-  heal:
-    description: Heil dich!
+  p:
+    description: Party command

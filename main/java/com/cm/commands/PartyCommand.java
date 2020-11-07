@@ -19,6 +19,13 @@ public class PartyCommand implements CommandExecutor {
             if (args[0].equalsIgnoreCase("invite")) {
                 members.add(args[1]);
                 player.sendMessage(ChatColor.GREEN + "Added " + args[1] + " to the partychat!");
+            } else if (args[0].equalsIgnoreCase("kick")) {
+
+                if (members.contains(args[1])){
+                    members.remove(args[1]);
+                } else {
+                    player.sendMessage(ChatColor.RED + "This Player is not in the Party");
+                }
             }
 
         }

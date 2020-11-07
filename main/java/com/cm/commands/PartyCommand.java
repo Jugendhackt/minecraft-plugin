@@ -15,14 +15,19 @@ public class PartyCommand implements CommandExecutor {
 
         if (args.length == 2) {
             if (args[0].equalsIgnoreCase("invite")) {
-                if (Main.members.size() == 0){
+                if (Main.members.size() == 0) {
                     Main.owner = player.getName();
                     player.sendMessage(ChatColor.GREEN + "You are the owner now of the party");
                 }
-                Main.members.add(args[1]);
-                player.sendMessage(ChatColor.GREEN + "Added " + args[1] + " to the partychat!");
+                if (Main.owner.equalsIgnoreCase(player.getName())) {
+                    Main.members.add(args[1]);
+                    player.sendMessage(ChatColor.GREEN + "Added " + args[1] + " to the partychat!");
+                } else {
+                    player.sendMessage(ChatColor.RED + "Only owners can invite players");
+                }
+
             } else if (args[0].equalsIgnoreCase("kick")) {
-                if(Main.owner.equalsIgnoreCase(player.getName())) {
+                if (Main.owner.equalsIgnoreCase(player.getName())) {
                     if (Main.members.contains(args[1])) {
                         Main.members.remove(args[1]);
                     } else {

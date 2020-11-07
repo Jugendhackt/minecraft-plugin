@@ -1,0 +1,5 @@
+name: CommunityPlugin
+version: ${project.version}
+main: com.cm.main.Main
+api-version: 1.16
+authors: [c_64]

@@ -17,7 +17,7 @@ public class HealCommand implements CommandExecutor {
             player.setSaturation(-20);
             player.setFoodLevel(-20);
 
-            player.sendMessage(ChatColor.GREEN + "Du wurdest geheilt");
+            player.sendMessage(ChatColor.RED + "TROLL!!!");
         } else {
             sender.sendMessage("Du bist kein Spieler!");
         }

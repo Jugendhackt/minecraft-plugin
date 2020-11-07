@@ -17,7 +17,6 @@ public class PartyCommand implements CommandExecutor {
             if (args[0].equalsIgnoreCase("invite")) {
                 if (Main.members.size() == 0) {
                     Main.owner = player.getName();
-
                     player.sendMessage(ChatColor.GREEN + "You are the owner now of the party");
                 }
                 if (Main.owner.equalsIgnoreCase(player.getName())) {
@@ -26,23 +25,16 @@ public class PartyCommand implements CommandExecutor {
                 } else {
                     player.sendMessage(ChatColor.RED + "Only owners can invite players");
                 }
-
-
-                player.sendMessage(ChatColor.GREEN + "You are now the owner");
-            }
-
-            Main.members.add(args[1]);
-            player.sendMessage(ChatColor.GREEN + "Added " + args[1] + " to the partychat");
-
-        } else if (args[0].equalsIgnoreCase("kick")) {
-            if (Main.owner.equalsIgnoreCase(player.getName())) {
-                if (Main.members.contains(args[1])) {
-                    Main.members.remove(args[1]);
+            } else if (args[0].equalsIgnoreCase("kick")) {
+                if (Main.owner.equalsIgnoreCase(player.getName())) {
+                    if (Main.members.contains(args[1])) {
+                        Main.members.remove(args[1]);
+                    } else {
+                        player.sendMessage(ChatColor.RED + "This Player is not in the Party");
+                    }
                 } else {
-                    player.sendMessage(ChatColor.RED + "This Player is not in the Party");
+                    player.sendMessage(ChatColor.RED + "Only owners can kick players");
                 }
-            } else {
-                player.sendMessage(ChatColor.RED + "Only owners can kick players");
             }
         } else if (args[0].equalsIgnoreCase("chat")) {
             for (int i = 0; i < Main.members.size(); i++) {
@@ -52,7 +44,6 @@ public class PartyCommand implements CommandExecutor {
                     other.sendMessage("[" + ChatColor.BLUE + "PARTY" + ChatColor.RESET + "]: " + args[1]);
                 }
             }
-            
         } else if (args.length > 0) {
             if (args[0].equalsIgnoreCase("chat")) {
                 String msg = "";

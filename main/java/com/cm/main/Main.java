@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public final class Main extends JavaPlugin {
 
+    public static ArrayList<String> members = new ArrayList<String>();
+
     @Override
     public void onEnable() {
 

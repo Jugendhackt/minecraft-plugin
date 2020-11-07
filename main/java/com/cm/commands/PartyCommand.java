@@ -1,5 +1,7 @@
 package com.cm.commands;
 
+import com.cm.main.Main;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,25 +15,26 @@ public class PartyCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player player = (Player) sender;
 
-        ArrayList<String> members = new ArrayList<String>();
-
         if (args.length == 2) {
             if (args[0].equalsIgnoreCase("invite")) {
-                members.add(args[1]);
+                Main.members.add(args[1]);
                 player.sendMessage(ChatColor.GREEN + "Added " + args[1] + " to the partychat!");
             } else if (args[0].equalsIgnoreCase("kick")) {
-
-                if (members.contains(args[1])){
-                    members.remove(args[1]);
+                if (Main.members.contains(args[1])) {
+                    Main.members.remove(args[1]);
                 } else {
                     player.sendMessage(ChatColor.RED + "This Player is not in the Party");
                 }
+            } else if (args[0].equalsIgnoreCase("chat")) {
+                for (int i = 0; i < Main.members.size(); i++) {
+                    Player other = Bukkit.getPlayer(Main.members.get(i));
+
+                    if (!Main.members.get(i).equalsIgnoreCase(player.getName())) {
+                        other.sendMessage("[" + ChatColor.BLUE + "PARTY" + ChatColor.RESET + "]: " + args[1]);
+                    }
+                }
             }
-
         }
-
-        System.out.println(members);
-
         return false;
     }
 }
